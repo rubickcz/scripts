@@ -46,7 +46,7 @@ if [ ! -d "${ARCHIVE_DIR}" ]; then
 fi
 
 # Create new dir with today's date (if doesn't exists)
-DIRNAME="$(date +%d-%m-%Y)"
+DIRNAME="$(date +%Y-%m-%d)"
 DEST_DIR="${ARCHIVE_DIR}${DIRNAME}/"
 
 if [ ! -d "${DEST_DIR}" ]; then
