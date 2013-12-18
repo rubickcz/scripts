@@ -1,7 +1,6 @@
 #!/bin/bash
 
 # Author: Ondrej Kulaty aka rubick
-# Version: 1.0
 #
 # This script is used for cleaning your Downloads directory gets filled up
 # with files by your browser (e.g. Chromium). The script will
@@ -9,32 +8,12 @@
 # Will not move directories so far.
 
 PROGRAM_NAME="archive-downloads"
+source functions.sh
+
 # Dir where downloaded files are stored
-DOWNLOADS_DIR="${HOME}/Downloads/"
+DOWNLOADS_DIR="${HOME}/downloads/"
 # Destination dir for storing archived files
 ARCHIVE_DIR="${DOWNLOADS_DIR}archive/"
-
-# Functions
-
-# Simple echo with program name prefix
-echo_message() {
-	echo "[${PROGRAM_NAME}]: $@"
-}
-
-# Same as message but prints to stderr
-echo_err() {
-	echo_message "$@" 1>&2
-}
-
-# Create dir and check if succeded. If not, terminate.
-mkdir_and_check() {
-	mkdir "$1"
-	if [ $? -ne 0 ]; then
-		echo_err "Creating directory failed!"
-		exit 1
-	fi
-}
-
 
 # Script begin
 echo_message "Will now archive files from ${DOWNLOADS_DIR}"
