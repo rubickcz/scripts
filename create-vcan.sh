@@ -10,8 +10,10 @@ modprobe can-dev
 modprobe can-raw
 modprobe vcan
 
+NAME=$1
+
 # create can interfaces
-ip link add dev can0 type vcan
+ip link add dev $NAME type vcan
 
 # bring interface up
-ifconfig can0 up
+ifconfig $NAME up
