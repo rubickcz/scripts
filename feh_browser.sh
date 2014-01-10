@@ -26,4 +26,4 @@ for i in *; do
 	[[ $i == $file ]] && c=$((${#arr[@]} - 1))
 done
 
-exec feh -F -d -S filename "$@" -- "${arr[@]:c}" "${arr[@]:0:c}"
+exec feh -F -d -S filename --start-at "$file" -- "${arr[@]:c}" "${arr[@]:0:c}"
