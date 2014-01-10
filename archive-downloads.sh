@@ -1,13 +1,14 @@
 #!/bin/bash
 
-# Author: Ondrej Kulaty aka rubick
+# ARCHIVE DOWNLOADS
+# author: Ondrej Kulaty (rubick)
 #
-# This script is used for cleaning your Downloads directory gets filled up
-# with files by your browser (e.g. Chromium). The script will
-# backup (archive) them to a specified directory. Works only for regular files.
-# Will not move directories so far.
+# This script is used for cleaning your downloads directory when it gets
+# filled up with files by your browser (e.g. Chromium), but you don't
+# want to delete them ritht now. The script will  backup (archive) them
+# to a specified directory. Works only for regular files so it will not
+# move directories so far. Invoke without parameters.
 
-PROGRAM_NAME="archive-downloads"
 source functions.sh
 
 # Dir where downloaded files are stored

@@ -1,13 +1,12 @@
 #!/bin/bash
 
-# Author: Ondrej Kulaty aka rubick
-# Version: 1.0
+# RESIZE PHOTOS
+# Author: Ondrej Kulaty (rubick)
 #
 # This script serves to resize photos to be uploaded to website
 # It resize all photos in current PWD dir in ./output/[album_name]/
-# It will also create album thumbnail
+# It will also create album thumbnail.
 
-PROGRAM_NAME="resize-photos"
 source functions.sh
 
 # trap interrupt signal

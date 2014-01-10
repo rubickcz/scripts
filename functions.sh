@@ -1,5 +1,5 @@
 # Common functions for scripts
-# Author: Ondrej Kulaty aka rubick
+# Author: Ondrej Kulaty (rubick)
 #
 # These are some common functions I am using in my scripts
 # Usage: inlcude this script in script with 'source functions.sh'
@@ -12,7 +12,7 @@ COLOR_RESET="\e[0m"
 
 # generic message prepended with program name
 echo_message() {
-    echo -e "${COLOR_BLUE}${PROGRAM_NAME}${COLOR_RESET}: $@"
+    echo -e "${COLOR_BLUE}$(basename ${0})${COLOR_RESET}: $@"
 }
 
 # Same as message but prints to stderr and in red

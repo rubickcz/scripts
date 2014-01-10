@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# This script allows feh browsing thru images if only one image was opened
-# taken from https://wiki.archlinux.org/index.php/Feh#File_Browser_Image_Launcher
+# FEH BROWSER
+# taken from: https://wiki.archlinux.org/index.php/Feh#File_Browser_Image_Launcher
+#
+# This script allows feh browsing thru images if only one image was
+# opened in current directory
 
 shopt -s nullglob
 
