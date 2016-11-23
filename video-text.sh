@@ -1,5 +1,10 @@
 #!/bin/bash
 
+# VIDEO TEXT
+# Author: Ondrej Kulaty (rubick)
+#
+# Adds a text overlay to video. Currently only hardcoded text
+
 source functions.sh
 
 SCRIPT_NAME="video-text.sh"
@@ -8,10 +13,10 @@ SCRIPT_NAME="video-text.sh"
 OUTPUT_FILE="output.mp4"
 
 echo_highlight "Input file?"
-read -e INPUT_FILE 
+read -e INPUT_FILE
 
 echo_highlight "CRF?"
-read -e CRF 
+read -e CRF
 
 ffmpeg -i "$INPUT_FILE" -c:v libx264 -preset medium -crf $CRF -vf "" -c:a aac -b:a 256k -strict -2 \
 -vf "drawtext=fontfile=/usr/share/fonts/truetype/ttf-dejavu/DejaVuSerif.ttf: \

@@ -7,7 +7,7 @@
 # Color definitions
 COLOR_BLUE="\e[1;34m"
 COLOR_RED="\e[1;31m"
-COLOR_GREEN="\e[1;32m" 
+COLOR_GREEN="\e[1;32m"
 COLOR_RESET="\e[0m"
 
 # generic message prepended with program name

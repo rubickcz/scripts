@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# DVD backup 
+# DVD backup
 # author: Ondrej Kulaty (rubick)
 #
-# Backups DVD to smaller MP4 file
+# Backups DVD to a smaller MP4 file. The contents of the DVD will be copied
+# into a temporary directory created in PWD. The conversion is then done by
+# ffmpeg.
 
 source functions.sh
 
@@ -24,9 +26,9 @@ if [ -d "$VOB_TMP_DIR" ]; then
 		rm -rf "${VOB_TMP_DIR}"
 		mkdir_and_check "$VOB_TMP_DIR"
 
-		# copy VOB files 
+		# copy VOB files
 		echo_message "Copying VOB files..."
-		dvdbackup -i "$DVD_DEVICE" -o . -F -n "$VOB_TMP_DIR" 
+		dvdbackup -i "$DVD_DEVICE" -o . -F -n "$VOB_TMP_DIR"
 		if [ $? -ne 0 ]; then
 			echo_err "Something went wrong with dvdbackup, exiting..."
 			exit 1
@@ -44,4 +46,5 @@ VOB_FILES=""
 for file in $VOB_TMP_DIR/VIDEO_TS/*.VOB; do
 	VOB_FILES="${VOB_FILES}./$file|"
 done
-ffmpeg -i concat:$VOB_FILES -c:v libx264 -preset medium -crf "$CRF" -vf "yadif=0:-1:1" -c:a aac -b:a 256k -strict -2 "$OUTPUT_FILE"
+#ffmpeg -i concat:$VOB_FILES -c:v libx264 -preset medium -crf "$CRF" -vf "yadif=0:-1:1" -c:a aac -b:a 256k -strict -2 "$OUTPUT_FILE"
+ffmpeg -i concat:$VOB_FILES -c:v libx264 -preset medium -crf "$CRF" -c:a aac -b:a 256k -strict -2 -aspect 16:9 "$OUTPUT_FILE"

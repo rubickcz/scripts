@@ -3,14 +3,14 @@
 # RESIZE PHOTOS
 # Author: Ondrej Kulaty (rubick)
 #
-# This script serves to resize photos to be uploaded to website
-# It resize all photos in current PWD dir in ./output/[album_name]/
+# This script serves to resize photos to be uploaded to a website
+# It stores resized photos in ./output/[album_name]/
 # It will also create album thumbnail.
 
 source functions.sh
 
 # trap interrupt signal
-trap control_c SIGINT 
+trap control_c SIGINT
 
 # 1) read album name
 ALBUM_NAME=""
@@ -42,14 +42,14 @@ if [ "$OUTPUT_DIR" == "" ]; then
 fi
 mkdir_and_check "${OUTPUT_DIR}${ALBUM_NAME}"
 
-# 5) photo size and annotation 
+# 5) photo size and annotation
 PHOTO_SIZE_OPTION=""
 PHOTO_SIZE=""
 echo_highlight "Choose preset:"
 echo "1) Caption: Hanačka Litovel, Size: 450000 (approx. 822x548)"
 echo "2) Caption: Hanácká mozeka Litovel, size: 785000 (approx. 1024x768)"
 
-read -e PHOTO_SIZE_OPTION 
+read -e PHOTO_SIZE_OPTION
 case $PHOTO_SIZE_OPTION in
     1) PHOTO_SIZE=450000; CAPTION="Hanačka Litovel" ;;
     2) PHOTO_SIZE=785000; CAPTION="Hanácká mozeka Litovel" ;;
@@ -60,11 +60,13 @@ esac
 for i in "${INPUT_DIR}"*.{jpg,JPG}; do
     if [ -f "${i}" ]; then
         echo_message "Resizing ${i}"
-        convert "${i}" -quality 85 -auto-orient -strip -resize "@${PHOTO_SIZE}" \
+        convert "${i}" -quality 85 -strip -resize "@${PHOTO_SIZE}" \
         -gravity SouthEast \
+        -font Open-Sans \
         -stroke '#000C' -strokewidth 2 -annotate +5+5 "${CAPTION}" \
         -stroke  none   -fill white    -annotate +5+5 "${CAPTION}" \
-        "${OUTPUT_DIR}${ALBUM_NAME}"/image-`date +%s%N`.jpg 
+        "${OUTPUT_DIR}${ALBUM_NAME}"/image-`date +%s%N`.jpg
+        #-auto-orient
     fi
 done
 

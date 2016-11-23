@@ -3,7 +3,7 @@
 # CREATE SCRIPT
 # author: Ondrej Kulaty (rubick)
 #
-# Creates sekeleton for BASH script
+# Creates skeleton for a BASH script
 # usage: ./create-script.sh script-name.sh
 
 source functions.sh
