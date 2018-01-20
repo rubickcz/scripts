@@ -62,7 +62,7 @@ for i in "${INPUT_DIR}"*.{jpg,JPG}; do
         echo_message "Resizing ${i}"
         convert "${i}" -quality 85 -strip -resize "@${PHOTO_SIZE}" \
         -gravity SouthEast \
-        -font Open-Sans \
+        -font DejaVu-Sans \
         -stroke '#000C' -strokewidth 2 -annotate +5+5 "${CAPTION}" \
         -stroke  none   -fill white    -annotate +5+5 "${CAPTION}" \
         "${OUTPUT_DIR}${ALBUM_NAME}"/image-`date +%s%N`.jpg
