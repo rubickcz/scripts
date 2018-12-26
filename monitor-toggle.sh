@@ -5,13 +5,20 @@
 #
 # Switches on/off a secondary monitor
 
-PRIMARY="HDMI1"
-SECONDARY="DP1"
+# improvement:
+# scan for any connected output (except laptop output) and activate them all 
+# if no outpu is found, activate just laptop output
 
-xrandr | grep -P "$SECONDARY connected [0-9]+x[0-9]+" > /dev/null
-if [ $? -eq 0 ]; then
-    xrandr --output $SECONDARY --off
-else
+PRIMARY=`xrandr | grep -oP "(HDMI|DP)[0-9](?= connected)"`
+SECONDARY="VGA1"
+LAPTOP_SCREEN="LVDS1"
+
+if [ ! -z $PRIMARY ]; then
+    # Primary monitor is connected
+    xrandr --output $LAPTOP_SCREEN --off
+    xrandr --output $PRIMARY --auto --primary
     xrandr --output $SECONDARY --auto --right-of $PRIMARY
-    xrandr --output $PRIMARY --primary
+else
+    xrandr --output $SECONDARY --off
+    xrandr --output $LAPTOP_SCREEN --auto
 fi
