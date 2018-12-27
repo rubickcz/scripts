@@ -9,7 +9,7 @@
 # scan for any connected output (except laptop output) and activate them all 
 # if no outpu is found, activate just laptop output
 
-PRIMARY=`xrandr | grep -oP "(HDMI|DP)[0-9](?= connected)"`
+PRIMARY=`xrandr | grep -oP "(HDMI|DP)[0-9-]+(?= connected)"`
 SECONDARY="VGA1"
 LAPTOP_SCREEN="LVDS1"
 
