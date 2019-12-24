@@ -10,6 +10,7 @@ Some of them are authored by me, the rest was found on internet. Read comments i
 + **feh_browser.sh** - Allows browsing through images in feh even when only one file was opened
 + **monitor-toggle.sh** - Toggle the secondary display
 + **resize-photos.sh** - Script I use to prepare photos for web upload
++ **stretch-break.sh** - Forces you do stretch every hour
 + **video-text.sh** - Overlay a text over a video
 + **website.sh** - Helper for editing of my website
 
