@@ -12,9 +12,9 @@ source functions.sh
 SCRIPT_NAME="dvd-backup.sh"
 
 # settings
-VOB_TMP_DIR="vob_tmp"
+VOB_TMP_DIR="vob_tmp/VIDEO_TS"
 DVD_DEVICE="/dev/sr0"
-OUTPUT_FILE="output.mp4"
+OUTPUT_FILE="output-${1}.mp4"
 
 # 1) create/clean tmp directory and copy VOB files
 if [ -d "$VOB_TMP_DIR" ]; then
@@ -43,7 +43,7 @@ if [ "$CRF" == "" ]; then
 	CRF="18"
 fi
 VOB_FILES=""
-for file in $VOB_TMP_DIR/VIDEO_TS/*.VOB; do
+for file in $VOB_TMP_DIR/*.VOB; do
 	VOB_FILES="${VOB_FILES}./$file|"
 done
 #ffmpeg -i concat:$VOB_FILES -c:v libx264 -preset medium -crf "$CRF" -vf "yadif=0:-1:1" -c:a aac -b:a 256k -strict -2 "$OUTPUT_FILE"
